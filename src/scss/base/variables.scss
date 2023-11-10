@@ -1,0 +1,62 @@
+:root {
+	/* Colors */
+	--black: #000;
+	--dupont: #171718;
+	--black-border: #26292d;
+	--white: #fff;
+	--purple: #5c62ec;
+	--menu-body-bg: #1b2327;
+	--ghost-white: #f8f8ff;
+	--gray: #252526;
+
+	/* Nav */
+	// --nav-bg: var(--black);
+	// --nav-border: var(--black-border);
+	--nav-text: var(--white);
+
+	/* Header */
+	--header-bg: #0a0a0b;
+	--header-bg-mobile: #141a1d;
+	--header-bg-slat: #141a1d;
+	--header-text: var(--white);
+
+	// Body
+
+	/* Footer */
+	--footer-bg: var(--dupont);
+	--footer-text: var(--white);
+
+	/* Light mode */
+}
+
+:root[data-theme='light'] {
+	--projects-bg: var(--ghost-white);
+	--section: var(--ghost-white);
+	--uniq-section: var(--white);
+	--popup-border: rgba(0, 0, 0, 0.4);
+	--button-bg: var(--dupont);
+	--button-color: var(--ghost-white);
+
+	--project-color: var(--black);
+	--project-bg-card: var(--white);
+	--box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.4);
+	--box-shadow-hv: 0 0 30px 4px rgb(92, 98, 236, 0.6);
+	--projects-title: var(--purple);
+}
+
+:root[data-theme='dark'] {
+	--projects-bg: var(--dupont);
+	--section: var(--gray);
+	--uniq-section: var(--gray);
+	--popup-border: #f8f8ff78;
+	--button-bg: var(--ghost-white);
+	--button-color: var(--black);
+
+	--project-color: var(--white);
+	--project-bg-card: #191924;
+	--box-shadow: 0 0 12px 4px rgba(237, 235, 235, 0.2);
+	--box-shadow-hv: 0 0 30px 4px rgba(237, 233, 233, 0.4);
+	--projects-title: var(--white);
+
+
+}

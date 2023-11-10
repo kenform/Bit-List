@@ -1,0 +1,143 @@
+//====================================================================================================
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+	transition: all 0.3s ease 0s;
+	background: #08090b;
+	@include adaptiveValue('padding-top', 60, 10);
+	@include adaptiveValue('padding-bottom', 60, 10);
+	// &._header-scroll {
+	// 	padding-top: toRem(20);
+	// 	padding-bottom: toRem(20);
+	// 	background-color: rgba(0, 0, 0, 0.6);
+	// }
+	// .header__container-big
+}
+
+.menu {
+	padding: 0 toRem(10);
+	// .menu__icon
+	&__icon {
+	}
+	// .menu__body
+	&__body {
+		@media (max-width: $mobile) {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			top: 0;
+			left: -100%;
+			transition: all 0.3s ease 0s;
+			overflow: auto;
+			background-color: #1b2327;
+			gap: toRem(30);
+			@include adaptiveValue('padding-top', 180, 120, 768, 320, 2);
+			padding-left: toRem(15);
+			padding-right: toRem(15);
+			padding-bottom: toRem(30);
+			&::before {
+				content: '';
+				position: fixed;
+				top: 0;
+				left: -100%;
+				transition: all 0.3s ease 0s;
+				width: 100%;
+				@include adaptiveValue('height', 105, 72, 768, 320, 2);
+				background-color: #141a1d;
+				z-index: 2;
+			}
+			.menu-open & {
+				left: 0;
+				&::before {
+					left: 0;
+				}
+			}
+		}
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		row-gap: toRem(10);
+		column-gap: toRem(44);
+		@include adaptiveValue('column-gap', 44, 15);
+		@media (max-width: $mobile) {
+			flex-direction: column;
+			text-align: center;
+			row-gap: toRem(30);
+		}
+	}
+	// .menu__item
+	&__item {
+		@extend %a;
+		@extend %link1;
+	}
+	// .menu__link
+	&__link {
+		@media (max-width: $mobile) {
+			font-size: toRem(40);
+		}
+	}
+}
+//====================================================================================================
+
+//Burger default
+
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: '';
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+				background-color: #fff;
+			}
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
