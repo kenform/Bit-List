@@ -1,0 +1,42 @@
+.button {
+	display: inline-block;
+	position: relative;
+	padding: 10px 24px;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 500;
+	border-radius: 6px;
+	@media (max-width: 767.98px) {
+		padding: 10px;
+		font-size: 16px;
+	}
+	&.gray,
+	&.blue {
+		transition: all 0.3s;
+	}
+	&.gray {
+		color: #cee7ff;
+		box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.4);
+		background: radial-gradient(100.04% 100% at 50% 0%, rgb(38, 49, 78) 0%, rgb(30, 37, 60) 100%);
+		@media (any-hover: hover) {
+			&:hover {
+				background: #f94b55;
+				color: #08090b;
+			}
+		}
+	}
+	&.blue {
+		color: #08090b;
+		box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.4);
+		background: radial-gradient(
+			100.04% 100% at 50% 0%,
+			rgb(102, 203, 249) 0%,
+			rgb(15, 181, 255) 100%
+		);
+		@media (any-hover: hover) {
+			&:hover {
+				background: #58f0a7;
+			}
+		}
+	}
+}

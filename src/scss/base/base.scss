@@ -15,13 +15,13 @@
 			left: 0;
 			width: 100%;
 			height: 0.1em;
-			background-color: #fff;
+			background-color: #2FBDFC;;
 			opacity: 0;
 			transition: opacity 300ms, transform 300ms;
 		}
 		&:hover,
 		&:focus {
-			color: #fff;
+			color: #2FBDFC;
 			&:after {
 				opacity: 5;
 				transform: translate3d(0, 0.2em, 0);
