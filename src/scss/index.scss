@@ -1,18 +1,27 @@
 @use 'sass:math';
 
-
-
 @import './base/variables';
 @import './base/mixins';
 @import './base/base';
 
-@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Inter:regular,500,700&display=swap);
 
 $fontFamily: 'Inter';
-$fontSize: toRem(16); // де 14(px) - розмір шрифту за замовчуванням з макету
+$fontSize: toRem(18); // де 14(px) - розмір шрифту за замовчуванням з макету
 
 // Основні кольори
-$mainColor: #000; // Колір шрифту за замовчуванням
+$mainColor: #464e62; // Колір шрифту за замовчуванням
+$headerColor: #464e62;
+
+$titleColor: #d5eaff;
+
+$greenColor: #58f0a7;
+$redColor: #f94b55;
+$cryptoColor: #C7E1FF;
+$blackColor: #08090B;
+$blueColor:#2FBDFC;
+
+
 
 // Налаштування адаптивної сітки ===============================================================================================================================================================================================================================================================================================
 
