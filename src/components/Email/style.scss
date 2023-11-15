@@ -1,0 +1,37 @@
+.email-intro {
+	max-width: 420px;
+
+	&__item {
+		display: flex;
+		align-items: center;
+		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #252b3d 100%);
+		box-shadow: 0 -1px 0 #3d4865;
+		padding-left: 20px;
+			border-radius: 6px;
+
+		input {
+			&::placeholder {
+				color: #6d799c;
+			}
+		}
+
+	}
+	&__input {
+		width: 100%;
+		color: #6d799c;
+		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #252b3d 100%);
+		padding: 10px;
+		gap: 8px;
+	}
+	&__button {
+		display: flex;
+		flex: 1 0 106px;
+		@media (max-width: 767.98px) {
+			flex: 1 0 72px;
+		}
+	}
+	&__icon {
+		flex: 0 0 25px;
+		color: #b2bee2;
+	}
+}

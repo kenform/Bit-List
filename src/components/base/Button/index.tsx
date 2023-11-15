@@ -6,9 +6,9 @@ type typeButton = {
 };
 const Button:React.FC<typeButton> = ({ modifier, text }) => {
 	return (
-		<a href="#" className={`button ${modifier}`}>
+		<button type="submit" className={`button ${modifier}`}>
 			<span>{text}</span>
-		</a>
+		</button>
 	);
 };
 export default Button;

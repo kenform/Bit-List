@@ -7,6 +7,17 @@
 	z-index: 50;
 	transition: all 0.3s ease 0s;
 	background: $blackColor;
+
+	border-bottom: 1px solid transparent;
+	border-image: linear-gradient(
+		90deg,
+		rgba(64, 193, 251, 0) 8.36%,
+		#40c0fb97 50.39%,
+		rgba(64, 193, 251, 0) 100%,
+		#252c41,
+	);
+	border-image-slice: 1;
+
 	@include adaptiveValue('padding-top', 30, 15);
 	@include adaptiveValue('padding-bottom', 30, 15);
 	&__container {
@@ -43,7 +54,6 @@
 		gap: 8px;
 	}
 }
-
 
 .menu {
 	display: flex;

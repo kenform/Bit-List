@@ -53,6 +53,7 @@ const Header: React.FC = () => {
 							</li>
 						</ul>
 					</nav>
+					
 					<div className='line'>
 						<img src='img/icons/base/line.svg' alt='' />
 					</div>

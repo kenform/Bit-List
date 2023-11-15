@@ -1,14 +1,24 @@
 .button {
-	display: inline-block;
+	display: inline-flex;
 	position: relative;
 	padding: 10px 24px;
 	font-size: 18px;
 	line-height: 24px;
 	font-weight: 500;
 	border-radius: 6px;
+	align-items: center;
+
 	@media (max-width: 767.98px) {
 		padding: 10px;
 		font-size: 16px;
+	}
+	&.dezentralized {
+		padding: 8px 12px;
+		box-shadow: 0 -1px 0 #1e2844;
+		background: radial-gradient(107.69% 100% at 50% 0%, #131a2e 0%, #111624 100%);
+		@media (max-width: 1300px) {
+			width: 100%;
+		}
 	}
 	&.gray,
 	&.blue {
