@@ -7,14 +7,13 @@
 	z-index: 50;
 	transition: all 0.3s ease 0s;
 	background: $blackColor;
-
 	border-bottom: 1px solid transparent;
 	border-image: linear-gradient(
 		90deg,
 		rgba(64, 193, 251, 0) 8.36%,
 		#40c0fb97 50.39%,
 		rgba(64, 193, 251, 0) 100%,
-		#252c41,
+		#252c41
 	);
 	border-image-slice: 1;
 
@@ -57,13 +56,13 @@
 
 .menu {
 	display: flex;
-	@media (min-width: $tablet) {
-		flex: 1 1 auto;
-	}
 	align-items: center;
 	justify-self: flex-end;
 	justify-content: space-between;
-	@include adaptiveValue('gap', 20, 10);
+	@include adaptiveValue('gap', 20, 15);
+	@media (min-width: $tablet) {
+		flex: 1 1 auto;
+	}
 	// .menu__icon
 	&__icon {
 	}

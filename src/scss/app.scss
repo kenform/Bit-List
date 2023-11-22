@@ -37,6 +37,7 @@
 	background: var(--section);
 }
 .intro {
+	position: relative;
 	&__container {
 		@include adaptiveValue('padding-top', 80, 60);
 	}
@@ -44,7 +45,7 @@
 		display: flex;
 
 		@media (min-width: 1300px) {
-			gap: 40px;
+			gap: 33px;
 		}
 		@media (max-width: em(1300)) {
 			flex-direction: column-reverse;
@@ -54,18 +55,18 @@
 	&__body {
 		position: relative;
 		@media (min-width: 1300px) {
-			bottom: -50px;
 			flex: 1 0 700px;
 		}
 		@media (max-width: em(1300)) {
+					overflow-x: hidden;
 			display: flex;
 			flex-direction: column;
 			text-align: center;
 			align-items: center;
-			@include adaptiveValue("padding-bottom",50 ,30 );
+			@include adaptiveValue('padding-bottom', 50, 30);
 		}
 		@media (min-width: em(1300)) {
-			@include adaptiveValue('padding-top', 160, 50);
+			@include adaptiveValue('padding-top', 180, 50);
 		}
 	}
 	&__button {
@@ -74,8 +75,8 @@
 	&__email {
 	}
 	&__image {
-		overflow: hidden;
 		@include adaptiveValue('padding-top', 80, 100);
+
 		@media (max-width: 1300px) {
 			@include adaptiveValue('padding-bottom', 50, 30);
 			img {
@@ -84,8 +85,7 @@
 		}
 	}
 	&__title {
-		max-width: toRem(700);
-		@include adaptiveValue('margin-bottom', 50, 20);
+		max-width: totoRem(700);
 	}
 }
 
@@ -95,4 +95,39 @@
 .intro__light_1 {
 }
 .intro__light_2 {
+}
+
+.icons-main-block {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	// .icons-main-block__item
+	&__item {
+		overflow-x: hidden;
+		img {
+			max-width: 100%;
+		}
+		z-index: 50;
+		position: absolute;
+
+		// .icons-main-block__item_1
+		&_1 {
+			top: percent(50, 374);
+			left: 0;
+		}
+		// .icons-main-block__item_2
+		&_2 {
+			top: percent(70, 374);
+			right: 0;
+		}
+		&_1,
+		&_2 {
+			@media (max-width: em(1300)) {
+				top: 0;
+			}
+		}
+	}
 }

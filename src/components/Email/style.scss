@@ -1,20 +1,26 @@
 .email-intro {
-	max-width: 420px;
-
+	position: relative;
+	@media (min-width: 1300px) {
+		max-width: 420px;
+		bottom: -20px;
+		position: absolute;
+	}
+	@media (max-width: 767.98px) {
+		width: 100%;
+	}
 	&__item {
 		display: flex;
 		align-items: center;
 		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #252b3d 100%);
 		box-shadow: 0 -1px 0 #3d4865;
 		padding-left: 20px;
-			border-radius: 6px;
+		border-radius: 6px;
 
 		input {
 			&::placeholder {
 				color: #6d799c;
 			}
 		}
-
 	}
 	&__input {
 		width: 100%;
