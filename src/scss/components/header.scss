@@ -4,9 +4,9 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 50;
+	z-index: 150;
 	transition: all 0.3s ease 0s;
-	background: $blackColor;
+
 	border-bottom: 1px solid transparent;
 	border-image: linear-gradient(
 		90deg,
@@ -16,6 +16,7 @@
 		#252c41
 	);
 	border-image-slice: 1;
+	background: $blackColor;
 
 	@include adaptiveValue('padding-top', 30, 15);
 	@include adaptiveValue('padding-bottom', 30, 15);
@@ -59,7 +60,7 @@
 	align-items: center;
 	justify-self: flex-end;
 	justify-content: space-between;
-	@include adaptiveValue('gap', 20, 15);
+	@include adaptiveValue('gap', 20, 10);
 	@media (min-width: $tablet) {
 		flex: 1 1 auto;
 	}
@@ -68,54 +69,78 @@
 	}
 	// .menu__body
 	&__body {
-		@media (max-width: $tablet) {
-			position: fixed;
-			width: 100%;
-			height: 100%;
+		&._footer {
 			display: flex;
-			flex-direction: column;
-			align-items: center;
-			top: 0;
-			left: -100%;
-			transition: all 0.3s ease 0s;
-			overflow: auto;
-			background-color: #1b2327;
-			gap: toRem(30);
-			@include adaptiveValue('padding-top', 180, 120, 768, 320, 2);
-			padding-left: toRem(15);
-			padding-right: toRem(15);
-			padding-bottom: toRem(30);
-			&::before {
-				content: '';
+			@include adaptiveValue('gap', 55, 35);
+		}
+		@media (max-width: $tablet) {
+			&._header {
 				position: fixed;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 				top: 0;
 				left: -100%;
 				transition: all 0.3s ease 0s;
-				width: 100%;
-				background-color: #141a1d;
-				z-index: 2;
-				@include adaptiveValue('height', 80, 75, 768, 320);
-			}
-			.menu-open & {
-				left: 0;
+				overflow: auto;
+				background-color: #1b2327;
+				gap: toRem(30);
+				@include adaptiveValue('padding-top', 180, 120, 768, 320, 2);
+				padding-left: toRem(15);
+				padding-right: toRem(15);
+				padding-bottom: toRem(30);
 				&::before {
+					content: '';
+					position: fixed;
+					top: 0;
+					left: -100%;
+					transition: all 0.3s ease 0s;
+					width: 100%;
+					background-color: #141a1d;
+					z-index: 2;
+					@include adaptiveValue('height', 80, 75, 768, 320);
+				}
+				.menu-open & {
 					left: 0;
+					&::before {
+						left: 0;
+					}
 				}
 			}
 		}
 	}
 	// .menu__list
 	&__list {
-		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 		row-gap: toRem(10);
+		&._header {
+			display: flex;
+			.menu__item._header {
+				display: none;
+			}
+			.menu__item {
+				@media (max-width: $tablet) {
+					padding: 40px 0;
+				}
+			}
+			.menu__link {
+				@media (max-width: $tablet) {
+					font-size: toRem(40);
+					color: #fff;
+				}
+			}
+		}
 		@include adaptiveValue('column-gap', 32, 15, 1, 1920, 900);
 		@media (max-width: $tablet) {
-			flex-direction: column;
-			text-align: center;
-			row-gap: toRem(30);
+			&._header {
+				flex-direction: column;
+				text-align: center;
+				row-gap: toRem(30);
+			}
 		}
 	}
 	// .menu__item
@@ -123,16 +148,9 @@
 		@extend %a;
 		@extend %link1;
 		color: $mainColor;
-		@media (max-width: $tablet) {
-			padding: 40px 0;
-		}
 	}
 	// .menu__link
 	&__link {
-		@media (max-width: $tablet) {
-			font-size: toRem(40);
-			color: #fff;
-		}
 	}
 }
 //====================================================================================================

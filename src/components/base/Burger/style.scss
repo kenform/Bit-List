@@ -5,9 +5,10 @@
 	@media (max-width: 991.98px) {
 		display: block;
 		position: relative;
-		width: toRem(30);
-		height: toRem(18);
+		width: 30px;
+		height: 18px;
 		z-index: 5;
+		order:9;
 		@media (any-hover: none) {
 			cursor: default;
 		}
@@ -19,7 +20,7 @@
 			right: 0;
 			position: absolute;
 			width: 100%;
-			height: toRem(2);
+			height: 2px;
 			background-color: #fff;
 		}
 		&::before {
@@ -29,7 +30,7 @@
 			bottom: 0;
 		}
 		span {
-			top: calc(50% - toRem(1));
+			top: calc(50% - 1px);
 		}
 		.menu-open & {
 			span {
@@ -40,11 +41,11 @@
 				background-color: #fff;
 			}
 			&::before {
-				top: calc(50% - toRem(1));
+				top: calc(50% - 1px);
 				transform: rotate(-45deg);
 			}
 			&::after {
-				bottom: calc(50% - toRem(1));
+				bottom: calc(50% - 1px);
 				transform: rotate(45deg);
 			}
 		}

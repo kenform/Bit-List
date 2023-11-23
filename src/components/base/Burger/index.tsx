@@ -1,7 +1,7 @@
 
 import './style.scss';
 
-const Burger = () => {
+const Burger:React.FC = () => {
 	const onClickIcon = () => {
 	document.body.classList.toggle('menu-open');
 		document.body.classList.toggle('_lock');

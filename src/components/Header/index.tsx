@@ -1,7 +1,8 @@
 import React from 'react';
 import Burger from '../base/Burger';
 import Button from '../base/Button';
-import Search from '../Search';
+import Search from '../base/Search';
+import Navbar from '../base/Navbar';
 
 const Header: React.FC = () => {
 	
@@ -23,37 +24,8 @@ const Header: React.FC = () => {
 				<div className='header__menu menu'>
 					<Burger />
 					<Search/>
-					
-					<nav className='menu__body'>
-						<ul className='menu__list'>
-							<li className='menu__item'>
-								<a href='#' className='menu__link'>
-									Trade
-								</a>
-							</li>
-							<li className='menu__item'>
-								<a href='#' className='menu__link'>
-									P2P
-								</a>
-							</li>
-							<li className='menu__item'>
-								<a href='#' className='menu__link'>
-									Partners
-								</a>
-							</li>
-							<li className='menu__item'>
-								<a href='#' className='menu__link'>
-									Mining
-								</a>
-							</li>
-							<li className='menu__item'>
-								<a href='#' className='menu__link'>
-									Academy
-								</a>
-							</li>
-						</ul>
-					</nav>
-					
+					<Navbar modifier='_header'/>
+
 					<div className='line'>
 						<img src='img/icons/base/line.svg' alt='' />
 					</div>

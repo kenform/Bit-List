@@ -1,7 +1,7 @@
-import Button from '../../components/base/Button';
+import Button from '../Button';
 
 import "./style.scss";
-const Email = () => {
+const Email:React.FC = () => {
 	return (
 		<div className='intro__email email-intro'>
 			<form action='#' className='email-intro__item'>

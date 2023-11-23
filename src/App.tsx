@@ -1,11 +1,12 @@
 import './scss/index.scss';
 
 import Header from './components/Header';
-import Email from './components/Email';
+import Email from './components/base/Email';
+import Footer from './components/Foooter';
 
 function App() {
 	return (
-		<>
+		<div className='wrapper'>
 			<Header />
 			<section className='page__intro intro section'>
 				<div className='main-block__icons icons-main-block'>
@@ -46,7 +47,9 @@ function App() {
 						</div> */}
 				</div>
 			</section>
-		</>
+			
+			<Footer />
+		</div>
 	);
 }
 
