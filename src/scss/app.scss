@@ -32,19 +32,22 @@
 }
 
 .section {
-}
-.page__intro {
 	background: var(--section);
 }
-.intro {
+.page__intro {
 	position: relative;
+	z-index: 15;
+}
+.page__register {
+	position: relative;
+}
+.intro {
 	&__container {
-		@include adaptiveValue('padding-top', 80, 60);
+		@include adaptiveValue('padding-top', 65, 60);
 	}
 	&__content {
 		display: flex;
-
-		@media (min-width: 1300px) {
+		@media (min-width: em(1300)) {
 			gap: 33px;
 		}
 		@media (max-width: em(1300)) {
@@ -58,7 +61,7 @@
 			flex: 1 0 700px;
 		}
 		@media (max-width: em(1300)) {
-					overflow-x: hidden;
+			overflow-x: hidden;
 			display: flex;
 			flex-direction: column;
 			text-align: center;
@@ -89,14 +92,6 @@
 	}
 }
 
-.intro__title {
-}
-
-.intro__light_1 {
-}
-.intro__light_2 {
-}
-
 .icons-main-block {
 	position: absolute;
 	width: 100%;
@@ -106,13 +101,12 @@
 	pointer-events: none;
 	// .icons-main-block__item
 	&__item {
+		position: absolute;
 		overflow-x: hidden;
+		z-index: 5;
 		img {
 			max-width: 100%;
 		}
-		z-index: 50;
-		position: absolute;
-
 		// .icons-main-block__item_1
 		&_1 {
 			top: percent(50, 374);
@@ -123,6 +117,23 @@
 			top: percent(70, 374);
 			right: 0;
 		}
+
+		&_3 {
+			top: percent(-470, 470);
+		}
+		&_4 {
+			top: percent(-470, 470);
+			right: 0;
+		}
+		&_5 {
+			top: -27rem;
+			margin: auto;
+			left: 21%;
+		}
+		&_3,
+		&_4 {
+			margin: auto;
+		}
 		&_1,
 		&_2 {
 			@media (max-width: em(1300)) {
@@ -131,3 +142,37 @@
 		}
 	}
 }
+
+//========================================================================================================================================================
+
+.register {
+	border-top: 1px solid transparent;
+	border-image: linear-gradient(
+		90deg,
+		rgba(64, 193, 251, 0) 8.36%,
+		#40c0fb97 50.39%,
+		rgba(64, 193, 251, 0) 91.67%,
+		#252c41
+	);
+	border-image-slice: 1;
+	&__container {
+		@include adaptiveValue('padding-top', 80, 70);
+		@include adaptiveValue('padding-bottom', 160, 70);
+	}
+	&__content {
+	}
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&__text {
+		font-weight: 400;
+		z-index: 6;
+		max-width: 700px;
+		text-align: center;
+		@include adaptiveValue('margin-bottom', 50, 40);
+	}
+}
+
+//========================================================================================================================================================

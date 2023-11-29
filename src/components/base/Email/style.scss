@@ -1,10 +1,14 @@
-.email-intro {
-	position: relative;
-	@media (min-width: 1300px) {
-		max-width: 420px;
-		bottom: -20px;
-		position: absolute;
+.email {
+	max-width: 420px;
+			z-index: 6;
+	&.intro {
+		position: relative;
+		@media (min-width: 1300px) {
+			bottom: -20px;
+			position: absolute;
+		}
 	}
+
 	@media (max-width: 767.98px) {
 		width: 100%;
 	}
