@@ -30,20 +30,49 @@
 		@include adaptiveValue('font-size', 72, 32);
 	}
 }
-
+.text {
+	color: $mainColor;
+	font-weight: 400;
+	line-height: math.div(28, 18);
+	@include adaptiveValue('font-size', 18, 16);
+}
+.gray-text {
+	color: #6d799c;
+	line-height: math.div(20, 16);
+	@include adaptiveValue('font-size', 16, 14);
+}
 .section {
 	background: var(--section);
 }
 .page__intro {
-	position: relative;
-	z-index: 15;
+	z-index: 11;
 }
+
 .page__register {
+}
+.page__about {
+	z-index: 11;
+}
+.page__brand {
+}
+.page__assets {
+}
+.page__intro,
+.page__register,
+.page__about,
+.page__brand,
+.page__assets {
 	position: relative;
 }
 .intro {
 	&__container {
 		@include adaptiveValue('padding-top', 65, 60);
+		@media (max-width: $tablet) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			@include adaptiveValue('padding-bottom', 45, 30);
+		}
 	}
 	&__content {
 		display: flex;
@@ -130,6 +159,12 @@
 			margin: auto;
 			left: 21%;
 		}
+		&_6 {
+			top: percent(-250, 470);
+		}
+		&_7 {
+			right: 18%;
+		}
 		&_3,
 		&_4 {
 			margin: auto;
@@ -172,6 +207,240 @@
 		max-width: 700px;
 		text-align: center;
 		@include adaptiveValue('margin-bottom', 50, 40);
+	}
+}
+
+//========================================================================================================================================================
+
+.about {
+	border-top: 1px solid transparent;
+	border-image: linear-gradient(
+		90deg,
+		rgba(64, 193, 251, 0) 8.36%,
+		#40c0fb97 50.39%,
+		rgba(64, 193, 251, 0) 91.67%,
+		#252c41
+	);
+	border-image-slice: 1;
+	&__container {
+		@include adaptiveValue('padding-top', 85, 60);
+		@include adaptiveValue('padding-bottom', 85, 60);
+	}
+	&__body {
+		display: flex;
+		justify-content: center;
+	}
+	&__content-cards {
+	}
+	&-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		@media (max-width: $tablet) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: $mobile) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		@include adaptiveValue('gap', 90, 40);
+		&__item {
+			@media (max-width: $tablet) {
+				display: grid;
+				justify-items: center;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.item-cards {
+	&__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 60px;
+		height: 48px;
+		border-radius: 4px;
+		border: 1px solid #52c5fa;
+		background: linear-gradient(180deg, #242834 0%, #1a1d26 100%);
+		// box-shadow: 0px 1px 7px 0px rgba(255, 255, 255, 0.32) inset;
+		@include adaptiveValue('margin-bottom', 24, 15);
+	}
+	&__title {
+		color: $titleColor;
+		font-weight: 469;
+		line-height: math.div(26, 20);
+		margin-bottom: toRem(8);
+		@include adaptiveValue('font-size', 20, 18);
+		@media (min-width: $tablet) {
+			max-width: 220px;
+		}
+	}
+	&__text {
+		@media (min-width: $tablet) {
+			max-width: 300px;
+		}
+	}
+}
+
+//========================================================================================================================================================
+
+.brand {
+	border-top: 1px solid #252c41;
+	&__container {
+		@include adaptiveValue('padding-top', 85, 60);
+		@include adaptiveValue('padding-bottom', 85, 60);
+	}
+	&__content {
+		display: flex;
+		justify-content: space-around;
+		gap: 30px;
+		@media (max-width: $tablet) {
+			flex-wrap: wrap;
+		}
+	}
+	&__body {
+		flex: 0 1 700px;
+		@media (max-width: $tablet) {
+			text-align: center;
+		}
+	}
+	&__title {
+		margin-bottom: toRem(16);
+	}
+	&__text {
+	}
+	&__logo-images {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@include adaptiveValue('gap', 85, 40);
+		@media (max-width: $mobile) {
+			grid-template-columns: repeat(1, 1fr);
+			justify-items: center;
+		}
+	}
+	&__logo-item {
+	}
+}
+
+//========================================================================================================================================================
+
+.assets {
+	&__container {
+		@include adaptiveValue('padding-top', 100, 80);
+		@include adaptiveValue('padding-bottom', 146, 90);
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		border-radius: 16px;
+		border: 1px solid #222d3e;
+		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #131820 0.01%, #0f151e 100%);
+		margin-bottom: toRem(16);
+		border: 1px solid #222D3E;
+	}
+	&__body {
+		display: flex;
+		border-top: 1px solid #222D3E;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid #222D3E;
+		}
+	}
+	&__item {
+		display: flex;
+		padding: 24px 20px;
+	}
+	&__header-labels {
+		display: flex;
+		padding: 24px;
+	}
+	&-label {
+		font-weight: 500;
+		display: flex;
+		gap: 20px;
+		&__asset {
+		}
+		&__price {
+		}
+		&__change {
+		}
+	}
+	&__all-assets {
+		cursor: pointer;
+		color: #cee7ff;
+		font-weight: 500;
+		line-height: math.div(24, 18);
+
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		border-radius: 8px;
+		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #1e253c 100%);
+		@include adaptiveValue('font-size', 18, 16);
+	}
+}
+
+.item-assets {
+	&__name,
+	&__price,
+	&__volume,
+	&__change {
+		color: $cryptoColor;
+		font-weight: 400;
+		letter-spacing: -0.5px;
+		line-height: math.div(17, 20);
+		@include adaptiveValue('font-size', 20, 18);
+	}
+	&__description {
+		display: flex;
+		flex: 1 0 750px;
+		align-items: center;
+	}
+	&__icon {
+		margin-right: 20px;
+	}
+	&__name {
+		margin-right: 8px;
+	}
+
+	&__symbol {
+	}
+	&__values {
+		display: flex;
+		flex: 1 0 auto;
+		align-items: center;
+		@include adaptiveValue('margin-right', 100, 60);
+		@include adaptiveValue('gap', 80, 40);
+	}
+	&__price {
+	}
+	&__change {
+		color: #f94b55;
+	}
+	&__volume {
+	}
+
+	&__button {
+		display: inline-flex;
+		cursor: pointer;
+		color: $blueColor;
+		font-weight: 500;
+		line-height: math.div(24, 18);
+		padding: 6px 16px;
+		align-items: center;
+		gap: 10px;
+		border-radius: 6px;
+		border: 1px solid $blueColor;
+		transition: all 0.3s;
+
+		@include adaptiveValue('font-size', 18, 16);
+		@media (any-hover: hover) {
+			&:hover {
+				background: $blueColor;
+				color: #fff;
+				border: 1px solid $mainColor;
+			}
+		}
 	}
 }
 

@@ -1,7 +1,7 @@
 .footer {
 	background: $blackColor;
 	border-top: 1px solid #252c41;
-		z-index: 15;
+	z-index: 15;
 	&__container {
 		@include adaptiveValue('padding-top', 62, 50);
 		@include adaptiveValue('padding-bottom', 32, 20);
@@ -14,7 +14,8 @@
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
-	@media (max-Ywidth: $mobileSmall) {
+
+	@media (max-width: $mobileSmall) {
 		flex-direction: column;
 		gap: 30px;
 		align-items: center;
