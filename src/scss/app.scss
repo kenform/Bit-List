@@ -17,7 +17,13 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--blue);
 }
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 1fr;
 
+	gap: 10px;
+}
 .title {
 	color: $titleColor;
 	font-weight: 465;
@@ -330,39 +336,44 @@
 		@include adaptiveValue('padding-bottom', 146, 90);
 	}
 	&__content {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-rows: repeat(2, 1fr);
+		// grid-template-rows: repeat(2, 1fr);
 		border-radius: 16px;
 		border: 1px solid #222d3e;
 		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #131820 0.01%, #0f151e 100%);
 		margin-bottom: toRem(16);
-		border: 1px solid #222D3E;
+		border: 1px solid #222d3e;
 	}
 	&__body {
 		display: flex;
-		border-top: 1px solid #222D3E;
+		border-top: 1px solid #222d3e;
 
 		&:not(:last-child) {
-			border-bottom: 1px solid #222D3E;
+			border-bottom: 1px solid #222d3e;
 		}
 	}
 	&__item {
-		display: flex;
 		padding: 24px 20px;
+		align-items: center;
 	}
 	&__header-labels {
-		display: flex;
-		padding: 24px;
+		padding-left: 24px;
 	}
 	&-label {
 		font-weight: 500;
-		display: flex;
-		gap: 20px;
+		align-items: center;
 		&__asset {
+			grid-column: 7 span;
 		}
 		&__price {
+			grid-column: 1 span;
 		}
 		&__change {
+			grid-column: 1 span;
+		}
+		&__volume {
+			grid-column: 2 span;
 		}
 	}
 	&__all-assets {
@@ -393,8 +404,8 @@
 	}
 	&__description {
 		display: flex;
-		flex: 1 0 750px;
 		align-items: center;
+		grid-column: 7 span;
 	}
 	&__icon {
 		margin-right: 20px;
@@ -405,22 +416,23 @@
 
 	&__symbol {
 	}
-	&__values {
-		display: flex;
-		flex: 1 0 auto;
-		align-items: center;
-		@include adaptiveValue('margin-right', 100, 60);
-		@include adaptiveValue('gap', 80, 40);
-	}
+
 	&__price {
+		grid-column: 1 span;
 	}
 	&__change {
 		color: #f94b55;
+		display: grid;
+		place-items: center;
+		grid-column: 1 span;
 	}
 	&__volume {
+		grid-column: 2 span;
+		display: grid;
 	}
 
 	&__button {
+		grid-column: 1 span;
 		display: inline-flex;
 		cursor: pointer;
 		color: $blueColor;

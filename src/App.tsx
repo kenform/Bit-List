@@ -43,8 +43,8 @@ function App() {
 
 			<section className='page__assets assets section'>
 				<div className='assets__container'>
-					<div className='assets__content'>
-						<div className='assets__header-labels assets-label'>
+					<div className='assets__content '>
+						<div className='assets__header-labels assets-label grid'>
 							<div className='assets-label__asset gray-text'>
 								<p>Asset</p>
 							</div>
@@ -54,15 +54,16 @@ function App() {
 							<div className='assets-label__change gray-text'>
 								<p>Change</p>
 							</div>
-							<div className='assets-label__change gray-text'>
+							<div className='assets-label__volume gray-text'>
 								<p>Volume</p>
 							</div>
 						</div>
+
 						<div className='assets__body'>
-							<div className='assets__item item-assets'>
+							<div className='assets__item item-assets grid'>
 								<div className='item-assets__description'>
 									<div className='item-assets__icon'>
-										<img src="img/icons/crypto-coins/1.svg" alt=""/>
+										<img src='img/icons/crypto-coins/1.svg' alt='' />
 									</div>
 									<div className='item-assets__name'>
 										<p>1inch</p>
@@ -71,17 +72,17 @@ function App() {
 										<p>1INCH</p>
 									</div>
 								</div>
-								<div className='item-assets__values'>
-									<div className='item-assets__price'>
-										<p>$ 30.000</p>
-									</div>
-									<div className='item-assets__change'>
-										<p>15 %</p>
-									</div>
-									<div className='item-assets__volume'>
-										<p>2.000.000M</p>
-									</div>
+
+								<div className='item-assets__price'>
+									<p>$ 30.000</p>
 								</div>
+								<div className='item-assets__change'>
+									<p>15 %</p>
+								</div>
+								<div className='item-assets__volume'>
+									<p>2.000.000M</p>
+								</div>
+
 								<div className='item-assets__button'>
 									<a href='#' className='button'>
 										Trade
@@ -97,7 +98,7 @@ function App() {
 					</div>
 				</div>
 			</section>
-			
+
 			<section className='page__brand brand section'>
 				<div className='brand__container'>
 					<div className='main-block__icons icons-main-block'>
