@@ -17,12 +17,22 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--blue);
 }
+._lock {
+	overflow: hidden;
+}
 .grid {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: 1fr;
-
 	gap: 10px;
+	@media (max-width: $tablet) {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	@media (max-width: $mobile) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: $mobile) {
+		gap: 20px;
+	}
 }
 .title {
 	color: $titleColor;
@@ -47,6 +57,7 @@
 	line-height: math.div(20, 16);
 	@include adaptiveValue('font-size', 16, 14);
 }
+
 .section {
 	background: var(--section);
 }
@@ -328,7 +339,7 @@
 	}
 }
 
-//========================================================================================================================================================
+//*========================================================================================================================================================
 
 .assets {
 	&__container {
@@ -337,45 +348,30 @@
 	}
 	&__content {
 		display: grid;
-		grid-template-rows: repeat(2, 1fr);
-		// grid-template-rows: repeat(2, 1fr);
 		border-radius: 16px;
-		border: 1px solid #222d3e;
 		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #131820 0.01%, #0f151e 100%);
 		margin-bottom: toRem(16);
 		border: 1px solid #222d3e;
 	}
+	&__header {
+		padding: toRem(24);
+		@media (max-width: $mobile) {
+			padding: toRem(18);
+		}
+	}
 	&__body {
 		display: flex;
-		border-top: 1px solid #222d3e;
+		flex-direction: column;
+		.assets__items {
+			padding: toRem(22) toRem(24);
+			align-items: center;
+			border-top: 1px solid #222d3e;
+			@media (max-width: $mobile) {
+				padding: toRem(18) toRem(20);
+			}
+		}
+	}
 
-		&:not(:last-child) {
-			border-bottom: 1px solid #222d3e;
-		}
-	}
-	&__item {
-		padding: 24px 20px;
-		align-items: center;
-	}
-	&__header-labels {
-		padding-left: 24px;
-	}
-	&-label {
-		font-weight: 500;
-		align-items: center;
-		&__asset {
-			grid-column: 7 span;
-		}
-		&__price {
-			grid-column: 1 span;
-		}
-		&__change {
-			grid-column: 1 span;
-		}
-		&__volume {
-			grid-column: 2 span;
-		}
-	}
 	&__all-assets {
 		cursor: pointer;
 		color: #cee7ff;
@@ -387,48 +383,45 @@
 		justify-content: center;
 		border-radius: 8px;
 		background: radial-gradient(100.04% 100% at 50% 0%, #26314e 0%, #1e253c 100%);
+		transition: all 0.3s;
 		@include adaptiveValue('font-size', 18, 16);
+		@media (any-hover: hover) {
+			&:hover {
+				background: $blueColor;
+			}
+		}
 	}
 }
-
 .item-assets {
-	&__name,
-	&__price,
-	&__volume,
-	&__change {
-		color: $cryptoColor;
-		font-weight: 400;
-		letter-spacing: -0.5px;
-		line-height: math.div(17, 20);
-		@include adaptiveValue('font-size', 20, 18);
-	}
-	&__description {
-		display: flex;
-		align-items: center;
-		grid-column: 7 span;
-	}
-	&__icon {
-		margin-right: 20px;
-	}
-	&__name {
-		margin-right: 8px;
-	}
-
-	&__symbol {
-	}
-
-	&__price {
-		grid-column: 1 span;
-	}
-	&__change {
-		color: #f94b55;
+	&__column {
 		display: grid;
-		place-items: center;
-		grid-column: 1 span;
-	}
-	&__volume {
-		grid-column: 2 span;
-		display: grid;
+
+		&.asset {
+			grid-column: 7 span;
+			@media (max-width: $tablet) {
+				grid-column: 1 span;
+			}
+			@media (max-width: $mobile) {
+				place-items: center;
+			}
+		}
+		&.price {
+			place-items: center;
+			grid-column: 1 span;
+		}
+		&.change {
+			place-items: center;
+			grid-column: 1 span;
+		}
+		&.volume {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			grid-column: 2 span;
+			@media (max-width: $tablet) {
+				grid-column: 1 span;
+			}
+		}
 	}
 
 	&__button {
@@ -444,8 +437,11 @@
 		border-radius: 6px;
 		border: 1px solid $blueColor;
 		transition: all 0.3s;
-
+		justify-content: center;
 		@include adaptiveValue('font-size', 18, 16);
+		@media (max-width: $mobile) {
+			grid-column: 2 span;
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				background: $blueColor;
@@ -455,5 +451,59 @@
 		}
 	}
 }
+.assets-item {
+	&__label {
+		font-weight: 500;
+	}
+	&__name,
+	&__price,
+	&__volume,
+	&__change {
+		color: $cryptoColor;
+		font-weight: 400;
+		letter-spacing: -0.5px;
+		line-height: math.div(26, 20);
+		@include adaptiveValue('font-size', 20, 16);
+	}
+	&__description {
+		display: flex;
+		align-items: center;
+		grid-column: 7 span;
+		@media (max-width: $tablet) {
+			justify-content: center;
+		}
+	}
+	&__icon {
+		@include adaptiveValue('margin-right', 20, 10);
+	}
+	&__name {
+		@include adaptiveValue('margin-right', 8, 4);
+	}
 
+	&__symbol {
+		color: #525a71;
+	}
+
+	&__price {
+		grid-column: 1 span;
+		min-width: 80px;
+	}
+	&__change {
+		color: #f94b55;
+		display: grid;
+		place-items: center;
+		grid-column: 1 span;
+	}
+	&__volume {
+		grid-column: 2 span;
+		display: grid;
+	}
+}
+
+.red {
+	color: $redColor;
+}
+.green {
+	color: $greenColor;
+}
 //========================================================================================================================================================

@@ -44,49 +44,254 @@ function App() {
 			<section className='page__assets assets section'>
 				<div className='assets__container'>
 					<div className='assets__content '>
-						<div className='assets__header-labels assets-label grid'>
-							<div className='assets-label__asset gray-text'>
-								<p>Asset</p>
-							</div>
-							<div className='assets-label__price gray-text'>
-								<p>Price</p>
-							</div>
-							<div className='assets-label__change gray-text'>
-								<p>Change</p>
-							</div>
-							<div className='assets-label__volume gray-text'>
-								<p>Volume</p>
+						<div className='assets__header'>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__label gray-text'>
+										<p>Asset</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__label gray-text'>
+										<p>Price</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__label gray-text'>
+										<p>Change</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__label gray-text'>
+										<p>Volume</p>
+									</div>
+								</div>
 							</div>
 						</div>
-
 						<div className='assets__body'>
-							<div className='assets__item item-assets grid'>
-								<div className='item-assets__description'>
-									<div className='item-assets__icon'>
-										<img src='img/icons/crypto-coins/1.svg' alt='' />
-									</div>
-									<div className='item-assets__name'>
-										<p>1inch</p>
-									</div>
-									<div className='item-assets__symbol gray-text'>
-										<p>1INCH</p>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__description'>
+										<div className='assets-item__icon'>
+											<img src='img/icons/crypto-coins/1.svg' alt='' />
+										</div>
+										<div className='assets-item__name'>
+											<p>1inch</p>
+										</div>
+										<div className='assets-item__symbol gray-text'>
+											<p>1INCH</p>
+										</div>
 									</div>
 								</div>
 
-								<div className='item-assets__price'>
-									<p>$ 30.000</p>
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__price'>
+										<p>$ 30.000</p>
+									</div>
 								</div>
-								<div className='item-assets__change'>
-									<p>15 %</p>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__change red'>
+										<p>15 %</p>
+									</div>
 								</div>
-								<div className='item-assets__volume'>
-									<p>2.000.000M</p>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__volume'>
+										<p>2.000.000M</p>
+									</div>
 								</div>
 
 								<div className='item-assets__button'>
-									<a href='#' className='button'>
-										Trade
-									</a>
+									<a href='#'>Trade</a>
+								</div>
+							</div>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__description'>
+										<div className='assets-item__icon'>
+											<img src='img/icons/crypto-coins/2.svg' alt='' />
+										</div>
+										<div className='assets-item__name'>
+											<p>Bitcoin</p>
+										</div>
+										<div className='assets-item__symbol gray-text'>
+											<p>BTC</p>
+										</div>
+									</div>
+								</div>
+
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__price '>
+										<p>$ 30.000</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__change green'>
+										<p>15 %</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__volume'>
+										<p>2.000.000M</p>
+									</div>
+								</div>
+
+								<div className='item-assets__button'>
+									<a href='#'>Trade</a>
+								</div>
+							</div>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__description'>
+										<div className='assets-item__icon'>
+											<img src='img/icons/crypto-coins/3.svg' alt='' />
+										</div>
+										<div className='assets-item__name'>
+											<p>Ethereum</p>
+										</div>
+										<div className='assets-item__symbol gray-text'>
+											<p>ETH</p>
+										</div>
+									</div>
+								</div>
+
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__price '>
+										<p>$ 30.000</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__change red'>
+										<p>15 %</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__volume'>
+										<p>2.000.000M</p>
+									</div>
+								</div>
+
+								<div className='item-assets__button'>
+									<a href='#'>Trade</a>
+								</div>
+							</div>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__description'>
+										<div className='assets-item__icon'>
+											<img src='img/icons/crypto-coins/4.svg' alt='' />
+										</div>
+										<div className='assets-item__name'>
+											<p>Binance Coin</p>
+										</div>
+										<div className='assets-item__symbol gray-text'>
+											<p>BNB</p>
+										</div>
+									</div>
+								</div>
+
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__price '>
+										<p>$ 30.000</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__change green'>
+										<p>15 %</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__volume'>
+										<p>2.000.000M</p>
+									</div>
+								</div>
+
+								<div className='item-assets__button'>
+									<a href='#'>Trade</a>
+								</div>
+							</div>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__description'>
+										<div className='assets-item__icon'>
+											<img src='img/icons/crypto-coins/5.svg' alt='' />
+										</div>
+										<div className='assets-item__name'>
+											<p>Binance USD</p>
+										</div>
+										<div className='assets-item__symbol gray-text'>
+											<p>BUSD</p>
+										</div>
+									</div>
+								</div>
+
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__price '>
+										<p>$ 30.000</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__change red'>
+										<p>15 %</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__volume'>
+										<p>2.000.000M</p>
+									</div>
+								</div>
+
+								<div className='item-assets__button'>
+									<a href='#'>Trade</a>
+								</div>
+							</div>
+							<div className='assets__items grid'>
+								<div className='item-assets__column asset assets-item'>
+									<div className='assets-item__description'>
+										<div className='assets-item__icon'>
+											<img src='img/icons/crypto-coins/6.svg' alt='' />
+										</div>
+										<div className='assets-item__name'>
+											<p>Polygon</p>
+										</div>
+										<div className='assets-item__symbol gray-text'>
+											<p>MATIC</p>
+										</div>
+									</div>
+								</div>
+
+								<div className='item-assets__column price assets-item'>
+									<div className='assets-item__price '>
+										<p>$ 30.000</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column change assets-item'>
+									<div className='assets-item__change green'>
+										<p>15 %</p>
+									</div>
+								</div>
+
+								<div className='item-assets__column volume assets-item'>
+									<div className='assets-item__volume'>
+										<p>2.000.000M</p>
+									</div>
+								</div>
+
+								<div className='item-assets__button'>
+									<a href='#'>Trade</a>
 								</div>
 							</div>
 						</div>
