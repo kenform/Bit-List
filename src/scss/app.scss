@@ -474,6 +474,10 @@
 		}
 	}
 	&__icon {
+		img {
+			width: 36px;
+			height: 36px;
+		}
 		@include adaptiveValue('margin-right', 20, 10);
 	}
 	&__name {
@@ -482,6 +486,7 @@
 
 	&__symbol {
 		color: #525a71;
+		text-transform: uppercase;
 	}
 
 	&__price {

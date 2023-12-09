@@ -1,10 +1,49 @@
 import './scss/index.scss';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import Header from './components/Header';
 import Email from './components/base/Email';
 import Footer from './components/Foooter';
-
+import Assets from './components/Assets';
 function App() {
+	// const [cryptoList, setCryptoList] = useState([]);
+	// const [cryptoPrice, setCryptoPrice] = useState('');
+	// const [cryptoVolume, setCryptoVolume] = useState('');
+	// const [cryptoChange, setCryptoChange] = useState(0);
+	const [coins, setCoins] = useState([]);
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const assets = [
+					'1inch',
+					'bitcoin',
+					'ethereum',
+					'binancecoin',
+					'binance-usd',
+					'matic-network',
+				];
+				const promises = assets.map((asset) =>
+					axios.get(
+						`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${asset}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR&precision=2`,
+					),
+				);
+				const responses = await Promise.all(promises);
+
+				const coinsData = responses.map((response) => {
+					return response.data[0];
+				});
+
+				setCoins(coinsData);
+			} catch (error) {
+				alert('Ошибка при запросе данных ;(');
+				console.error(error);
+			}
+		}
+		const intervalId = setInterval(fetchData, 5000);
+		return () => clearInterval(intervalId);
+	}, []);
+	console.log(coins);
 	return (
 		<div className='wrapper'>
 			<Header />
@@ -71,230 +110,7 @@ function App() {
 								</div>
 							</div>
 						</div>
-						<div className='assets__body'>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__description'>
-										<div className='assets-item__icon'>
-											<img src='img/icons/crypto-coins/1.svg' alt='' />
-										</div>
-										<div className='assets-item__name'>
-											<p>1inch</p>
-										</div>
-										<div className='assets-item__symbol gray-text'>
-											<p>1INCH</p>
-										</div>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__price'>
-										<p>$ 30.000</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__change red'>
-										<p>15 %</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__volume'>
-										<p>2.000.000M</p>
-									</div>
-								</div>
-
-								<div className='item-assets__button'>
-									<a href='#'>Trade</a>
-								</div>
-							</div>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__description'>
-										<div className='assets-item__icon'>
-											<img src='img/icons/crypto-coins/2.svg' alt='' />
-										</div>
-										<div className='assets-item__name'>
-											<p>Bitcoin</p>
-										</div>
-										<div className='assets-item__symbol gray-text'>
-											<p>BTC</p>
-										</div>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__price '>
-										<p>$ 30.000</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__change green'>
-										<p>15 %</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__volume'>
-										<p>2.000.000M</p>
-									</div>
-								</div>
-
-								<div className='item-assets__button'>
-									<a href='#'>Trade</a>
-								</div>
-							</div>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__description'>
-										<div className='assets-item__icon'>
-											<img src='img/icons/crypto-coins/3.svg' alt='' />
-										</div>
-										<div className='assets-item__name'>
-											<p>Ethereum</p>
-										</div>
-										<div className='assets-item__symbol gray-text'>
-											<p>ETH</p>
-										</div>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__price '>
-										<p>$ 30.000</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__change red'>
-										<p>15 %</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__volume'>
-										<p>2.000.000M</p>
-									</div>
-								</div>
-
-								<div className='item-assets__button'>
-									<a href='#'>Trade</a>
-								</div>
-							</div>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__description'>
-										<div className='assets-item__icon'>
-											<img src='img/icons/crypto-coins/4.svg' alt='' />
-										</div>
-										<div className='assets-item__name'>
-											<p>Binance Coin</p>
-										</div>
-										<div className='assets-item__symbol gray-text'>
-											<p>BNB</p>
-										</div>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__price '>
-										<p>$ 30.000</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__change green'>
-										<p>15 %</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__volume'>
-										<p>2.000.000M</p>
-									</div>
-								</div>
-
-								<div className='item-assets__button'>
-									<a href='#'>Trade</a>
-								</div>
-							</div>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__description'>
-										<div className='assets-item__icon'>
-											<img src='img/icons/crypto-coins/5.svg' alt='' />
-										</div>
-										<div className='assets-item__name'>
-											<p>Binance USD</p>
-										</div>
-										<div className='assets-item__symbol gray-text'>
-											<p>BUSD</p>
-										</div>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__price '>
-										<p>$ 30.000</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__change red'>
-										<p>15 %</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__volume'>
-										<p>2.000.000M</p>
-									</div>
-								</div>
-
-								<div className='item-assets__button'>
-									<a href='#'>Trade</a>
-								</div>
-							</div>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__description'>
-										<div className='assets-item__icon'>
-											<img src='img/icons/crypto-coins/6.svg' alt='' />
-										</div>
-										<div className='assets-item__name'>
-											<p>Polygon</p>
-										</div>
-										<div className='assets-item__symbol gray-text'>
-											<p>MATIC</p>
-										</div>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__price '>
-										<p>$ 30.000</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__change green'>
-										<p>15 %</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__volume'>
-										<p>2.000.000M</p>
-									</div>
-								</div>
-
-								<div className='item-assets__button'>
-									<a href='#'>Trade</a>
-								</div>
-							</div>
-						</div>
+						<Assets coins={coins} />
 					</div>
 					<div className='assets__all-assets'>
 						<button type='submit' className='button'>
@@ -468,3 +284,31 @@ function App() {
 }
 
 export default App;
+
+// A1758144-0948-40AB-B513-953637492FBC
+
+// const [portfolio, setPortfolio] = useState([]);
+
+// useEffect(() => {
+// 	async function fetchExchangeRates() {
+// 		const assets = ['BTC', 'ETH', 'XRP'];
+// 		const promises = assets.map((asset) =>
+// 			axios.get(`https://rest.coinapi.io/v1/exchangerate/${asset}/USD?apikey=A1758144-0948-40AB-B513-953637492FBC`),
+// 		);
+// 		const responses = await Promise.all(promises);
+// 		const exchangeRates = responses.reduce((acc, response, index) => {
+// 			acc[assets[index]] = response.data.rate;
+// 			return acc;
+// 		}, {});
+// 		setPortfolio(exchangeRates);
+// 	}
+// 	fetchExchangeRates();
+
+// 	// Fetch exchange rates every 5 seconds
+// 	const intervalId = setInterval(fetchExchangeRates, 5000);
+
+// 	// Clean up the interval when the component unmounts to avoid memory leaks
+// 	return () => clearInterval(intervalId);
+// }, []);
+
+// axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h&locale=en&precision=1&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR')
