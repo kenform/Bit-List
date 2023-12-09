@@ -4,8 +4,11 @@ import Button from '../base/Button';
 import Search from '../base/Search';
 import Navbar from '../base/Navbar';
 
-const Header: React.FC = () => {
-	
+const Header: React.FC = ({ setSearch }) => {
+	const handleChange = (e) => {
+		setSearch(e.target.value);
+	};
+
 	return (
 		<header className='header'>
 			<div className='header__container'>
@@ -23,8 +26,8 @@ const Header: React.FC = () => {
 
 				<div className='header__menu menu'>
 					<Burger />
-					<Search/>
-					<Navbar modifier='_header'/>
+					<Search onchange={handleChange} />
+					<Navbar modifier='_header' />
 
 					<div className='line'>
 						<img src='img/icons/base/line.svg' alt='' />

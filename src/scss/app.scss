@@ -491,7 +491,9 @@
 
 	&__price {
 		grid-column: 1 span;
-		min-width: 80px;
+		@media (min-width: $mobile) {
+			min-width: 80px;
+		}
 	}
 	&__change {
 		color: #f94b55;

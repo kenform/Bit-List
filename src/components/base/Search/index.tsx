@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import "./style.scss"
-const Search:React.FC = () => {
+const Search:React.FC = ({onchange}) => {
 	const searchRef = useRef<HTMLDivElement>(null);
 	const onClickIcon = () => {
 		document.querySelector('.search-form')?.classList.toggle('_active');
@@ -30,6 +30,7 @@ const Search:React.FC = () => {
 					data-value='Search for minimalist chair'
 					type='text'
 					className='search-form__input'
+					onChange={onchange}
 				/>
 			</form>
 		</div>

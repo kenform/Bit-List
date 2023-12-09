@@ -6,47 +6,69 @@ import Header from './components/Header';
 import Email from './components/base/Email';
 import Footer from './components/Foooter';
 import Assets from './components/Assets';
+
+// busd crypto coin icons were not displayed on coingecko api
+// const imgList: string[] = [
+// 	'img/icons/crypto-coins/1.svg',
+// 	'img/icons/crypto-coins/2.svg',
+// 	'img/icons/crypto-coins/3.svg',
+// 	'img/icons/crypto-coins/4.svg',
+// 	'img/icons/crypto-coins/5.svg',
+// 	'img/icons/crypto-coins/6.svg',
+// ];
+
 function App() {
-	// const [cryptoList, setCryptoList] = useState([]);
-	// const [cryptoPrice, setCryptoPrice] = useState('');
-	// const [cryptoVolume, setCryptoVolume] = useState('');
-	// const [cryptoChange, setCryptoChange] = useState(0);
-	const [coins, setCoins] = useState([]);
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const assets = [
-					'1inch',
-					'bitcoin',
-					'ethereum',
-					'binancecoin',
-					'binance-usd',
-					'matic-network',
-				];
-				const promises = assets.map((asset) =>
-					axios.get(
-						`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${asset}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR&precision=2`,
-					),
-				);
-				const responses = await Promise.all(promises);
 
-				const coinsData = responses.map((response) => {
-					return response.data[0];
-				});
 
-				setCoins(coinsData);
-			} catch (error) {
-				alert('Ошибка при запросе данных ;(');
-				console.error(error);
-			}
+	const [search, setSearch] = useState('');
+	const [coins, setCoins] = useState<
+		{
+			id: string;
+			name: string;
+			symbol: string;
+			current_price: number;
+			price_change_percentage_24h: number;
+			market_cap: number;
+		}[]
+	>([]);
+
+
+
+	async function fetchData() {
+		try {
+			const assets = [
+				'1inch',
+				'bitcoin',
+				'ethereum',
+				'binancecoin',
+				'binance-usd',
+				'matic-network',
+			];
+			const promises = assets.map((asset) =>
+				axios.get(
+					`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${asset}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR&precision=2`,
+				),
+			);
+			const responses = await Promise.all(promises);
+
+			//! fix type coinsData
+			const coinsData = responses.map((response) => {
+				return response.data[0];
+			});
+			setCoins(coinsData);
+		} catch (error) {
+			console.error(error);
 		}
-		const intervalId = setInterval(fetchData, 5000);
+	}
+
+	useEffect(() => {
+		const intervalId = setInterval(fetchData, 1000);
 		return () => clearInterval(intervalId);
 	}, []);
-	console.log(coins);
+
 	return (
 		<div className='wrapper'>
-			<Header />
+			<Header setSearch={setSearch} />
 			<section className='page__intro intro section'>
 				<div className='main-block__icons icons-main-block'>
 					<div className='icons-main-block__item icons-main-block__item_1'>
@@ -110,7 +132,8 @@ function App() {
 								</div>
 							</div>
 						</div>
-						<Assets coins={coins} />
+
+						<Assets search={search} coins={coins} />
 					</div>
 					<div className='assets__all-assets'>
 						<button type='submit' className='button'>

@@ -1,12 +1,33 @@
 import { FC } from 'react';
-import Asset from '../Asset';
+import Coin from '../Coin';
 
-const Assets: FC = ({ coins }) => {
+// img={coin.image}
+// img={imgList[index]}
+type typeAssetsProps = {
+	coins: {
+		id: string;
+		image: string;
+		name: string;
+		symbol: string;
+		current_price: number;
+		price_change_percentage_24h: number;
+		market_cap: number;
+	}[];
+	imgList: string[];
+};
+
+const Assets: FC<typeAssetsProps> = ({ coins,search}) => {
+	
+
+		const filteredCoins = coins.filter((coin) =>
+		coin.name.toLowerCase().includes(search.toLowerCase()),
+	);
 	return (
 		<div className='assets__body'>
-			{coins.map((coin) => {
+
+			{filteredCoins.map((coin) => {
 				return (
-					<Asset
+					<Coin
 						key={coin.id}
 						img={coin.image}
 						name={coin.name}
@@ -20,5 +41,6 @@ const Assets: FC = ({ coins }) => {
 		</div>
 	);
 };
+
 
 export default Assets;

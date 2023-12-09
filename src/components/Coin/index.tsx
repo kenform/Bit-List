@@ -1,11 +1,13 @@
 import { FC } from 'react';
-type typeAssetProp = {
-	img:string;
-	price:string;
-	change:string;
-	marketCap:string;
-}
-const Asset: FC<typeAssetProp> = ({img,name,symbol,price,change,marketCap}) => {
+type typeCoinProps = {
+	img: string;
+	name: string;
+	symbol: string;
+	price: number;
+	change: number;
+	marketCap: number;
+};
+const Coin: FC<typeCoinProps> = ({ img, name, symbol, price, change, marketCap }) => {
 	return (
 		<div className='assets__items grid'>
 			<div className='item-assets__column asset assets-item'>
@@ -29,14 +31,20 @@ const Asset: FC<typeAssetProp> = ({img,name,symbol,price,change,marketCap}) => {
 			</div>
 
 			<div className='item-assets__column change assets-item'>
-				<div className='assets-item__change red'>
-					<p>{change.toFixed(2)} %</p>
-				</div>
+				{change < 0 ? (
+					<div className='assets-item__change red'>
+						<p>{change.toFixed(2)} %</p>
+					</div>
+				) : (
+					<div className='assets-item__change green'>
+						<p>{change.toFixed(2)} %</p>
+					</div>
+				)}
 			</div>
 
 			<div className='item-assets__column volume assets-item'>
 				<div className='assets-item__volume'>
-					<p>{marketCap} M</p>
+					<p>{((marketCap/1000000).toFixed(2)).toLocaleString()} M</p>
 				</div>
 			</div>
 
@@ -47,4 +55,4 @@ const Asset: FC<typeAssetProp> = ({img,name,symbol,price,change,marketCap}) => {
 	);
 };
 
-export default Asset;
+export default Coin;
