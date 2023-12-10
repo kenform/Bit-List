@@ -9,7 +9,6 @@
 	align-items: center;
 
 	@media (max-width: 767.98px) {
-		padding: 10px;
 		font-size: 16px;
 	}
 	&.dezentralized {
@@ -47,6 +46,15 @@
 			&:hover {
 				background: #58f0a7;
 			}
+		}
+	}
+}
+.header__button {
+	&_blue {
+	}
+	&_gray {
+		@media (max-width: 479.98px) {
+			display: none;
 		}
 	}
 }

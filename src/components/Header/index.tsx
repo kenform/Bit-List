@@ -33,8 +33,8 @@ const Header: React.FC = ({ setSearch }) => {
 						<img src='img/icons/base/line.svg' alt='' />
 					</div>
 					<div className='header__actions'>
-						<Button modifier='gray' text='Register' />
-						<Button modifier='blue' text='Log in' />
+						<Button modifier='gray header__button_gray' text='Register' />
+						<Button modifier='blue header__button_blue' text='Log in' />
 					</div>
 				</div>
 			</div>

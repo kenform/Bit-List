@@ -26,7 +26,7 @@ const Coin: FC<typeCoinProps> = ({ img, name, symbol, price, change, marketCap }
 
 			<div className='item-assets__column price assets-item'>
 				<div className='assets-item__price'>
-					<p>$ {price}</p>
+					<p>$ {price.toFixed(5).toLocaleString('')}</p>
 				</div>
 			</div>
 

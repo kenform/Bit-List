@@ -49,6 +49,7 @@
 			}
 		}
 	}
+
 	&__actions {
 		display: flex;
 		gap: 8px;
@@ -60,7 +61,7 @@
 	align-items: center;
 	justify-self: flex-end;
 	justify-content: space-between;
-	@include adaptiveValue('gap', 20, 10);
+	@include adaptiveValue('gap', 20, 30);
 	@media (min-width: $tablet) {
 		flex: 1 1 auto;
 	}
