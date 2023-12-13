@@ -343,7 +343,7 @@
 
 .assets {
 	&__container {
-		@include adaptiveValue('padding-top', 100, 80);
+		@include adaptiveValue('padding-top', 100, 50);
 		@include adaptiveValue('padding-bottom', 146, 90);
 	}
 	&__content {
@@ -397,7 +397,7 @@
 		display: grid;
 
 		&.asset {
-			grid-column: 7 span;
+			grid-column: 6 span;
 			@media (max-width: $tablet) {
 				grid-column: 1 span;
 			}
@@ -407,7 +407,10 @@
 		}
 		&.price {
 			place-items: center;
-			grid-column: 1 span;
+			grid-column: 2 span;
+			@media (max-width: $tablet) {
+				grid-column: 1 span;
+			}
 		}
 		&.change {
 			place-items: center;
@@ -463,15 +466,12 @@
 		font-weight: 400;
 		letter-spacing: -0.5px;
 		line-height: math.div(26, 20);
-		@include adaptiveValue('font-size', 20, 16);
+		@include adaptiveValue('font-size', 20, 14);
 	}
 	&__description {
 		display: flex;
 		align-items: center;
 		grid-column: 7 span;
-		@media (max-width: $tablet) {
-			justify-content: center;
-		}
 	}
 	&__icon {
 		img {

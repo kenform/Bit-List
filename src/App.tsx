@@ -18,8 +18,6 @@ import Assets from './components/Assets';
 // ];
 
 function App() {
-
-
 	const [search, setSearch] = useState('');
 	const [coins, setCoins] = useState<
 		{
@@ -32,8 +30,6 @@ function App() {
 		}[]
 	>([]);
 
-
-
 	async function fetchData() {
 		try {
 			const assets = [
@@ -41,12 +37,16 @@ function App() {
 				'bitcoin',
 				'ethereum',
 				'binancecoin',
-				'binance-usd',
+				'algorand',
 				'matic-network',
+				'mina-protocol',
+				'terra-luna',
+				'cosmos',
+				'okb',
 			];
 			const promises = assets.map((asset) =>
 				axios.get(
-					`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${asset}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR&precision=2`,
+					`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${asset}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR&precision=5`,
 				),
 			);
 			const responses = await Promise.all(promises);
@@ -60,9 +60,9 @@ function App() {
 			console.error(error);
 		}
 	}
-
 	useEffect(() => {
-		const intervalId = setInterval(fetchData, 1000);
+		
+		const intervalId = setInterval(fetchData, 5000);
 		return () => clearInterval(intervalId);
 	}, []);
 
@@ -101,47 +101,7 @@ function App() {
 					<Email modifier='intro' />
 				</div>
 			</section>
-
-			<section className='page__assets assets section'>
-				<div className='assets__container'>
-					<div className='assets__content '>
-						<div className='assets__header'>
-							<div className='assets__items grid'>
-								<div className='item-assets__column asset assets-item'>
-									<div className='assets-item__label gray-text'>
-										<p>Asset</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column price assets-item'>
-									<div className='assets-item__label gray-text'>
-										<p>Price</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column change assets-item'>
-									<div className='assets-item__label gray-text'>
-										<p>Change</p>
-									</div>
-								</div>
-
-								<div className='item-assets__column volume assets-item'>
-									<div className='assets-item__label gray-text'>
-										<p>Volume</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<Assets search={search} coins={coins} />
-					</div>
-					<div className='assets__all-assets'>
-						<button type='submit' className='button'>
-							All assets
-						</button>
-					</div>
-				</div>
-			</section>
+			<Assets search={search} coins={coins} />
 
 			<section className='page__brand brand section'>
 				<div className='brand__container'>
@@ -307,31 +267,3 @@ function App() {
 }
 
 export default App;
-
-// A1758144-0948-40AB-B513-953637492FBC
-
-// const [portfolio, setPortfolio] = useState([]);
-
-// useEffect(() => {
-// 	async function fetchExchangeRates() {
-// 		const assets = ['BTC', 'ETH', 'XRP'];
-// 		const promises = assets.map((asset) =>
-// 			axios.get(`https://rest.coinapi.io/v1/exchangerate/${asset}/USD?apikey=A1758144-0948-40AB-B513-953637492FBC`),
-// 		);
-// 		const responses = await Promise.all(promises);
-// 		const exchangeRates = responses.reduce((acc, response, index) => {
-// 			acc[assets[index]] = response.data.rate;
-// 			return acc;
-// 		}, {});
-// 		setPortfolio(exchangeRates);
-// 	}
-// 	fetchExchangeRates();
-
-// 	// Fetch exchange rates every 5 seconds
-// 	const intervalId = setInterval(fetchExchangeRates, 5000);
-
-// 	// Clean up the interval when the component unmounts to avoid memory leaks
-// 	return () => clearInterval(intervalId);
-// }, []);
-
-// axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h&locale=en&precision=1&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR')
