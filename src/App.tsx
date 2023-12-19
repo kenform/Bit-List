@@ -1,6 +1,7 @@
 import './scss/index.scss';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+
+import { useCoinsStore } from '../src/zustand/store';
 
 import Header from './components/Header';
 import Email from './components/base/Email';
@@ -18,91 +19,19 @@ import Assets from './components/Assets';
 // ];
 
 function App() {
-	const [search, setSearch] = useState('');
-	const [coins, setCoins] = useState<
-		{
-			id: string;
-			name: string;
-			symbol: string;
-			current_price: number;
-			price_change_percentage_24h: number;
-			market_cap: number;
-		}[]
-	>([]);
+	const coins = useCoinsStore((state) => state.coins);
+	const search = useCoinsStore((state) => state.search);
+	const fetchData = useCoinsStore((state) => state.fetchData);
 
-	async function fetchData() {
-		try {
-			const assets = [
-				'1inch',
-				'bitcoin',
-				'ethereum',
-				'binancecoin',
-				'algorand',
-				'matic-network',
-				'mina-protocol',
-				'terra-luna',
-				'cosmos',
-				'okb',
-			];
-			const promises = assets.map((asset) =>
-				axios.get(
-					`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${asset}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en&x_cg_demo_api_key=CG-X7spoMHCQMFNK4Wd63SWD5bR&precision=5`,
-				),
-			);
-			const responses = await Promise.all(promises);
-
-			//! fix type coinsData
-			const coinsData = responses.map((response) => {
-				return response.data[0];
-			});
-			setCoins(coinsData);
-		} catch (error) {
-			console.error(error);
-		}
-	}
 	useEffect(() => {
-		
 		const intervalId = setInterval(fetchData, 5000);
 		return () => clearInterval(intervalId);
 	}, []);
 
 	return (
 		<div className='wrapper'>
-			<Header setSearch={setSearch} />
-			<section className='page__intro intro section'>
-				<div className='main-block__icons icons-main-block'>
-					<div className='icons-main-block__item icons-main-block__item_1'>
-						<img src='img/lights/Intro/1.svg' alt='' />
-					</div>
-					<div className='icons-main-block__item icons-main-block__item_2'>
-						<img src='img/lights/Intro/2.svg' alt='' />
-					</div>
-				</div>
-				<div className='intro__container'>
-					<div className='intro__content '>
-						<div className='intro__body '>
-							<div className='intro__button'>
-								<a href='#'>
-									<img
-										className='button dezentralized'
-										src='img/icons/dezentralized-button.svg'
-										alt=''
-									/>
-								</a>
-							</div>
-							<div className='intro__title title --72'>
-								<h1>Buy, trade and store cryptocurrencies</h1>
-							</div>
-						</div>
-						<div className='intro__image'>
-							<img src='img/graph.svg' alt='graph crypto transactions' />
-						</div>
-					</div>
-					<Email modifier='intro' />
-				</div>
-			</section>
+			<Header />
 			<Assets search={search} coins={coins} />
-
 			<section className='page__brand brand section'>
 				<div className='brand__container'>
 					<div className='main-block__icons icons-main-block'>

@@ -4,10 +4,7 @@ import Button from '../base/Button';
 import Search from '../base/Search';
 import Navbar from '../base/Navbar';
 
-const Header: React.FC = ({ setSearch }) => {
-	const handleChange = (e) => {
-		setSearch(e.target.value);
-	};
+const Header: React.FC = () => {
 
 	return (
 		<header className='header'>
@@ -26,7 +23,7 @@ const Header: React.FC = ({ setSearch }) => {
 
 				<div className='header__menu menu'>
 					<Burger />
-					<Search onchange={handleChange} />
+					<Search />
 					<Navbar modifier='_header' />
 
 					<div className='line'>

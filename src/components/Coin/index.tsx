@@ -1,13 +1,16 @@
 import { FC } from 'react';
-type typeCoinProps = {
-	img: string;
-	name: string;
-	symbol: string;
-	price: number;
-	change: number;
-	marketCap: number;
-};
-const Coin: FC<typeCoinProps> = ({ img, name, symbol, price, change, marketCap }) => {
+import { typeCoinProps } from '../../zustand/types';
+
+const Coin: FC<typeCoinProps> = ({
+	img,
+	name,
+	symbol,
+	price,
+	change24h,
+	change7d,
+	change30d,
+	change1year,
+}) => {
 	return (
 		<div className='assets__items grid'>
 			<div className='item-assets__column asset assets-item'>
@@ -26,31 +29,62 @@ const Coin: FC<typeCoinProps> = ({ img, name, symbol, price, change, marketCap }
 
 			<div className='item-assets__column price assets-item'>
 				<div className='assets-item__price'>
-					<p>$ {price.toFixed(5).toLocaleString('')}</p>
+					<p>$ {price.toFixed(5).toLocaleString()}</p>
 				</div>
 			</div>
 
 			<div className='item-assets__column change assets-item'>
-				{change < 0 ? (
+				{change24h < 0 ? (
 					<div className='assets-item__change red'>
-						<p>{change.toFixed(2)} %</p>
+						<p>{change24h.toFixed(2)} %</p>
 					</div>
 				) : (
 					<div className='assets-item__change green'>
-						<p>{change.toFixed(2)} %</p>
+						<p>{change24h.toFixed(2)} %</p>
 					</div>
 				)}
 			</div>
 
-			<div className='item-assets__column volume assets-item'>
+			<div className='item-assets__column change assets-item'>
 				<div className='assets-item__volume'>
-					<p>{((marketCap/1000000).toFixed(2)).toLocaleString()} M</p>
+					{change7d < 0 ? (
+						<div className='assets-item__change red'>
+							<p>{change7d.toFixed(2)} %</p>
+						</div>
+					) : (
+						<div className='assets-item__change green'>
+							<p>{change7d.toFixed(2)} %</p>
+						</div>
+					)}
+				</div>
+			</div>
+			<div className='item-assets__column change assets-item'>
+				<div className='assets-item__volume'>
+					{change30d < 0 ? (
+						<div className='assets-item__change red'>
+							<p>{change30d.toFixed(2)} %</p>
+						</div>	
+					) : (
+						<div className='assets-item__change green'>
+							<p>{change30d.toFixed(2)} %</p>
+						</div>
+					)}
+				</div>
+			</div>
+			<div className='item-assets__column change assets-item'>
+				<div className='assets-item__volume'>
+					{change1year < 0 ? (
+						<div className='assets-item__change red'>
+							<p>{change1year.toFixed(2)} %</p>
+						</div>	
+					) : (
+						<div className='assets-item__change green'>
+							<p>{change1year.toFixed(2)} %</p>
+						</div>
+					)}
 				</div>
 			</div>
 
-			<div className='item-assets__button'>
-				<a href='#'>Trade</a>
-			</div>
 		</div>
 	);
 };

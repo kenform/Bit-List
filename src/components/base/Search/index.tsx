@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import "./style.scss"
-const Search:React.FC = ({onchange}) => {
+import { useCoinsStore } from '../../../zustand/store';
+import './style.scss';
+
+const Search: React.FC = () => {
+	const handleChange = useCoinsStore((state) => state.handleChange);
+	const search = useCoinsStore((state) => state.search);
+
 	const searchRef = useRef<HTMLDivElement>(null);
 	const onClickIcon = () => {
 		document.querySelector('.search-form')?.classList.toggle('_active');
@@ -17,7 +22,7 @@ const Search:React.FC = ({onchange}) => {
 	}, []);
 	return (
 		<div ref={searchRef} className='header__search search-form'>
-			<button  onClick={onClickIcon} className='search-form__icon '>
+			<button onClick={onClickIcon} className='search-form__icon '>
 				<img src='img/icons/base/search.svg' alt='' />
 			</button>
 			<form action='#' className='search-form__item'>
@@ -29,8 +34,9 @@ const Search:React.FC = ({onchange}) => {
 					name='form[]'
 					data-value='Search for minimalist chair'
 					type='text'
+					value={search}
+					onChange={handleChange}
 					className='search-form__input'
-					onChange={onchange}
 				/>
 			</form>
 		</div>

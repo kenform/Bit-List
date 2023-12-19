@@ -1,9 +1,9 @@
-
+import type { FC } from 'react';
 import './style.scss';
 
-const Burger:React.FC = () => {
+const Burger: FC = () => {
 	const onClickIcon = () => {
-	document.body.classList.toggle('menu-open');
+		document.body.classList.toggle('menu-open');
 		document.body.classList.toggle('_lock');
 	};
 
